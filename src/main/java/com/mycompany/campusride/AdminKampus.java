@@ -19,17 +19,14 @@ public class AdminKampus extends User {
         String pilih;
         do {
             System.out.println("\n=== MENU ADMIN: " + getNama() + " ===");
-            System.out.println("-- Data Transportasi --");
             System.out.println(" 1. Lihat Rute");
             System.out.println(" 2. Tambah Rute");
             System.out.println(" 3. Ubah Nama Rute");
             System.out.println(" 4. Hapus Rute");
             System.out.println(" 5. Tambah Halte ke Rute");
             System.out.println(" 6. Ubah Jadwal");
-            System.out.println("-- Pengumuman --");
             System.out.println(" 7. Buat Pengumuman");
             System.out.println(" 8. Ubah Pengumuman");
-            System.out.println("-- Akun & Monitoring --");
             System.out.println(" 9. Lihat Pengguna");
             System.out.println("10. Tambah Akun");
             System.out.println("11. Hapus Akun");
