@@ -2,10 +2,6 @@ package com.mycompany.campusride;
 
 import java.util.Scanner;
 
-/**
- * MAIN CLASS: titik awal program CampusRide x Tayo Kampus.
- * Berisi data (array objek), method bantu, dan method main.
- */
 public class Main {
 
     static final int MAX = 20;
@@ -17,11 +13,9 @@ public class Main {
     static Pengumuman[] daftarPengumuman = new Pengumuman[MAX];
     static int jumlahPengumuman = 0;
 
-    // Array bertipe superclass User, isinya objek subclass
     static User[] daftarUser = new User[MAX];
     static int jumlahUser = 0;
 
-    // ---------------------------------------------------------------
     public static void main(String[] args) {
         isiDataAwal();
         boolean jalan = true;
@@ -46,9 +40,7 @@ public class Main {
         System.out.println("Terima kasih telah menggunakan CampusRide!");
     }
 
-    // Data contoh -> ganti dengan data asli Tayo Kampus
     static void isiDataAwal() {
-        // Object instantiation dengan keyword 'new'
         tambahUser(new AdminKampus("admin", "admin123", "Admin Kampus"));
 
         Rute a = new Rute("A", "Gerbang Utama - Perpustakaan", "07.00", "07.00", "17.00");
@@ -69,7 +61,6 @@ public class Main {
                 "Cek jadwal Tayo Kampus sebelum berangkat."));
     }
 
-    // ===== Login & Daftar =====
     static void login() {
         String u = baca("Username: ");
         String p = baca("Password: ");
@@ -83,7 +74,7 @@ public class Main {
             User user = daftarUser[idx];
             System.out.println("Login berhasil sebagai " + user.getRole());
             System.out.println("Hak akses: " + user.getHakAkses());
-            user.menu(); // menjalankan menu() milik subclass yang sesuai
+            user.menu();
         }
     }
 
@@ -106,7 +97,6 @@ public class Main {
         }
     }
 
-    // ===== Helper (dipakai juga oleh Mahasiswa dan AdminKampus) =====
     static String baca(String prompt) {
         System.out.print(prompt);
         return sc.nextLine().trim();
@@ -130,7 +120,6 @@ public class Main {
         return -1;
     }
 
-    // ===== Overloading cariRute =====
     static void cariRute(String dari) {
         boolean ketemu = false;
         for (int i = 0; i < jumlahRute; i++) {
