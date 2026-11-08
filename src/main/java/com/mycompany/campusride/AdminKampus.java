@@ -1,4 +1,4 @@
-package com.mycompany.campusride;
+package com.mycompany.campusride; 
 
 public class AdminKampus extends User {
 
