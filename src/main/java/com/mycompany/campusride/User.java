@@ -30,7 +30,6 @@ public class User {
         return password.equals(pw);
     }
 
-    // ===== Method yang akan di-OVERRIDE oleh subclass =====
     public String getRole() {
         return "user";
     }
