@@ -1,17 +1,14 @@
 package com.mycompany.campusride;
 
 public class Rute {
-    // Static: dimiliki class, dipakai bersama oleh semua objek Rute
     private static int totalRuteDibuat = 0;
 
-    // Data rute dan jadwal
     private String kode;
     private String nama;
     private String jamBerangkat;
     private String jamMulai;
     private String jamSelesai;
 
-    // Data halte disimpan langsung di Rute (array paralel: nama dan keterangan)
     private String[] namaHalte = new String[10];
     private String[] keteranganHalte = new String[10];
     private int jumlahHalte = 0;
@@ -25,14 +22,12 @@ public class Rute {
         totalRuteDibuat++;
     }
 
-    // ===== Static method =====
     public static int getTotalRuteDibuat() { return totalRuteDibuat; }
 
     public static boolean jamValid(String jam) {
         return jam != null && jam.matches("([01]\\d|2[0-3])\\.[0-5]\\d");
     }
 
-    // ===== Getter =====
     public String getKode() { return kode; }
     public String getNama() { return nama; }
     public String getJamBerangkat() { return jamBerangkat; }
@@ -42,7 +37,6 @@ public class Rute {
     public String getNamaHalte(int posisi) { return namaHalte[posisi]; }
     public String getKeteranganHalte(int posisi) { return keteranganHalte[posisi]; }
 
-    // ===== Setter + validasi =====
     public boolean setNama(String nama) {
         if (nama == null || nama.trim().isEmpty()) {
             System.out.println("Nama rute tidak boleh kosong!");
@@ -79,10 +73,9 @@ public class Rute {
         return true;
     }
 
-    // ===== Method Overloading: tambahHalte =====
     public boolean tambahHalte(String nama, String keterangan) {
         if (jumlahHalte >= namaHalte.length) {
-            return false; // kapasitas penuh
+            return false;
         }
         namaHalte[jumlahHalte] = nama;
         keteranganHalte[jumlahHalte] = keterangan;
@@ -90,13 +83,10 @@ public class Rute {
         return true;
     }
 
-    // Versi tanpa keterangan
     public boolean tambahHalte(String nama) {
         return tambahHalte(nama, "-");
     }
 
-    // ===== Method lain =====
-    // Posisi halte yang cocok dengan kata kunci, -1 jika tidak ada
     public int cariHalte(String kataKunci) {
         String k = kataKunci.toLowerCase();
         for (int i = 0; i < jumlahHalte; i++) {

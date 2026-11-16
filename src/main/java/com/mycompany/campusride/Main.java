@@ -2,10 +2,6 @@ package com.mycompany.campusride;
 
 import java.util.Scanner;
 
-/**
- * MAIN CLASS: titik awal program CampusRide x Tayo Kampus.
- * Berisi data (array objek), method bantu, dan method main.
- */
 public class Main {
 
     static final int MAX = 20;
@@ -17,11 +13,9 @@ public class Main {
     static Pengumuman[] daftarPengumuman = new Pengumuman[MAX];
     static int jumlahPengumuman = 0;
 
-    // Array bertipe superclass User, isinya objek subclass
     static User[] daftarUser = new User[MAX];
     static int jumlahUser = 0;
 
-    // ---------------------------------------------------------------
     public static void main(String[] args) {
         isiDataAwal();
         boolean jalan = true;
@@ -46,30 +40,34 @@ public class Main {
         System.out.println("Terima kasih telah menggunakan CampusRide!");
     }
 
-    // Data contoh -> ganti dengan data asli Tayo Kampus
     static void isiDataAwal() {
-        // Object instantiation dengan keyword 'new'
         tambahUser(new AdminKampus("admin", "admin123", "Admin Kampus"));
 
-        Rute a = new Rute("A", "Gerbang Utama - Perpustakaan", "07.00", "07.00", "17.00");
-        a.tambahHalte("Gerbang Utama", "Pintu masuk kampus");
-        a.tambahHalte("Rektorat", "Dekat gedung rektorat");
+        Rute a = new Rute("A", "Gerbang Utama - Rektorat", "07.00", "07.00", "17.30");
+        a.tambahHalte("Gerbang Bypass dan GSG", "Depan Pos Satpam");
+        a.tambahHalte("Perpustakaan", "Depan Gedung UPA TIK");
         a.tambahHalte("Fakultas Teknik", "Depan gedung Fakultas Teknik");
-        a.tambahHalte("Perpustakaan", "Depan perpustakaan pusat");
+        a.tambahHalte("Fakultas Ekonomi dan Bisnis", "Depan gedung FEB");
+        a.tambahHalte("Fisip", "Samping Gedung Fisip");
+        a.tambahHalte("Fakultas Hukum", "Depan Gerbang Masuk Fakultas Hukum");
+        a.tambahHalte("Rektorat", "Depan gedung rektorat");
 
-        Rute b = new Rute("B", "Asrama - Fakultas Ekonomi", "07.30", "07.30", "16.30");
-        b.tambahHalte("Asrama", "Area asrama mahasiswa");
-        b.tambahHalte("Fakultas MIPA", "Samping gedung MIPA");
-        b.tambahHalte("Fakultas Ekonomi");
-
+        Rute b = new Rute("B", "Rusunawa - Fakultas Kedokteran", "07.00", "07.00", "17.30");
+        b.tambahHalte("Rusunawa", "Depan Gerbang Masuk Rusunawa");
+        b.tambahHalte("Embung B dan Lapangan", "Samping Embung B");
+        b.tambahHalte("Rektorat", "Depan gedung rektorat");
+        b.tambahHalte("FKIP dan FMIPA", "Gerbang Masuk FKIP Selatan (Depan Gedung Ilmu Komputer)");
+        b.tambahHalte("Fakultas Kedokteran", "Depan Embung C Kedokteran");
+        b.tambahHalte("Shuttle Bus dan Parkiran", "Shuttle Bus");
+        b.tambahHalte("Fakultas Pertanian", "Depan Gedung Jurusan Agronomi");
+        
         tambahRute(a);
         tambahRute(b);
 
         tambahPengumuman(new Pengumuman("Selamat datang",
-                "Cek jadwal Tayo Kampus sebelum berangkat."));
+                " Tidak Ada Hal Spesial Hari ini"));
     }
 
-    // ===== Login & Daftar =====
     static void login() {
         String u = baca("Username: ");
         String p = baca("Password: ");
@@ -83,7 +81,7 @@ public class Main {
             User user = daftarUser[idx];
             System.out.println("Login berhasil sebagai " + user.getRole());
             System.out.println("Hak akses: " + user.getHakAkses());
-            user.menu(); // menjalankan menu() milik subclass yang sesuai
+            user.menu();
         }
     }
 
@@ -106,7 +104,6 @@ public class Main {
         }
     }
 
-    // ===== Helper (dipakai juga oleh Mahasiswa dan AdminKampus) =====
     static String baca(String prompt) {
         System.out.print(prompt);
         return sc.nextLine().trim();
@@ -130,7 +127,6 @@ public class Main {
         return -1;
     }
 
-    // ===== Overloading cariRute =====
     static void cariRute(String dari) {
         boolean ketemu = false;
         for (int i = 0; i < jumlahRute; i++) {

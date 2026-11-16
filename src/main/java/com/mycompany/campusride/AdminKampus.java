@@ -19,17 +19,14 @@ public class AdminKampus extends User {
         String pilih;
         do {
             System.out.println("\n=== MENU ADMIN: " + getNama() + " ===");
-            System.out.println("-- Data Transportasi --");
             System.out.println(" 1. Lihat Rute");
             System.out.println(" 2. Tambah Rute");
             System.out.println(" 3. Ubah Nama Rute");
             System.out.println(" 4. Hapus Rute");
             System.out.println(" 5. Tambah Halte ke Rute");
             System.out.println(" 6. Ubah Jadwal");
-            System.out.println("-- Pengumuman --");
             System.out.println(" 7. Buat Pengumuman");
             System.out.println(" 8. Ubah Pengumuman");
-            System.out.println("-- Akun & Monitoring --");
             System.out.println(" 9. Lihat Pengguna");
             System.out.println("10. Tambah Akun");
             System.out.println("11. Hapus Akun");
@@ -78,7 +75,7 @@ public class AdminKampus extends User {
         String nama = Main.baca("Nama rute: ");
         String berangkat = Main.baca("Jam berangkat (07.00): ");
         String mulai = Main.baca("Operasional mulai (07.00): ");
-        String selesai = Main.baca("Operasional selesai (17.00): ");
+        String selesai = Main.baca("Operasional selesai (17.30): ");
 
         if (nama.isEmpty()) {
             System.out.println("Nama rute tidak boleh kosong.");
@@ -204,7 +201,7 @@ public class AdminKampus extends User {
         String uname = Main.baca("Username yang dihapus: ");
         int i = Main.cariUser(uname);
         if (i == -1) { System.out.println("User tidak ditemukan."); return; }
-        if (uname.equals(getUsername())) { // akun sendiri tidak boleh dihapus
+        if (uname.equals(getUsername())) {
             System.out.println("Anda tidak bisa menghapus akun yang sedang dipakai.");
             return;
         }
